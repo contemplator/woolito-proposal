@@ -1,14 +1,16 @@
 {
-  "name": "angular-template",
+  "name": "woolito-proposal",
   "version": "6.0.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod --aot --base-href=./",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "predeploy": "npm run build",
+    "deploy": "ssh woolito@166.62.30.153 'rm -rf /home/woolito/public_html/proposal' && scp -r ./dist woolito@166.62.30.153:/home/woolito/public_html/proposal"
   },
   "private": true,
   "dependencies": {
