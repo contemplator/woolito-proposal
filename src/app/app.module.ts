@@ -4,8 +4,10 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+import { NgxMasonryModule } from 'ngx-masonry';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AppService } from './app.service';
 
 @NgModule({
   declarations: [
@@ -14,9 +16,11 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    NgxMasonryModule
   ],
-  providers: [],
+  providers: [AppService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

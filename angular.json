@@ -17,7 +17,7 @@
             "tsConfig": "src/tsconfig.app.json",
             "polyfills": "src/polyfills.ts",
             "assets": ["src/assets", "src/favicon.ico"],
-            "styles": ["node_modules/primeng/resources/primeng.min.css", "node_modules/primeng/resources/themes/omega/theme.css", "node_modules/font-awesome/css/font-awesome.min.css", "src/styles.css"],
+            "styles": ["src/styles.css"],
             "scripts": []
           },
           "configurations": {

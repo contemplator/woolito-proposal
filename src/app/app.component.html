@@ -1,3 +1,10 @@
-<h1>
-  {{title}}
-</h1>
+<ngx-masonry class="container" [useImagesLoaded]="true">
+  <ngxMasonryItem class="card" *ngFor="let card of cards">
+    <div class="title">{{card.name}}</div>
+    <div class="desc">{{card.desc}}</div>
+
+    <div class="" *ngIf="card.idAttachmentCover">
+      <img [src]="card.attachments[0].url">
+    </div>
+  </ngxMasonryItem>
+</ngx-masonry>
