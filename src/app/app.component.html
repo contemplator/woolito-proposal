@@ -25,7 +25,7 @@
   </div>
 
   <div class="work-sub-section" *ngFor="let sub of works">
-    <h3>{{getCategory(sub)}}</h3>
+    <h3 class="sub-section-title">{{getCategory(sub)}}</h3>
 
     <ngx-masonry class="work-container" [useImagesLoaded]="true">
       <ngxMasonryItem class="work" *ngFor="let item of sub.cards" (click)="onWorkClick(item)">
