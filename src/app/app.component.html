@@ -1,10 +1,42 @@
-<ngx-masonry class="container" [useImagesLoaded]="true">
-  <ngxMasonryItem class="card" *ngFor="let card of cards">
-    <div class="title">{{card.name}}</div>
-    <div class="desc">{{card.desc}}</div>
+<div class="header">
+  <!-- <div class="sub-title">Woolito 提案系統</div> -->
+  <div class="main-title">富邦 - 初步提案</div>
+  <div class="banner">
+    <div class="banner-content markdown" [innerHTML]="require"></div>
+  </div>
+</div>
 
-    <div class="" *ngIf="card.idAttachmentCover">
-      <img [src]="card.attachments[0].url">
-    </div>
-  </ngxMasonryItem>
-</ngx-masonry>
+<div class="target-audience section">
+  <div class="hr-msg">
+    <div class="line-long"></div>
+    <div class="line-msg">Target Audience</div>
+    <div class="line-long"></div>
+  </div>
+
+  <h2 class="section-title">目標觀眾</h2>
+  <div class="markdown target-content" [innerHTML]="audience"></div>
+</div>
+
+<div class="suggestion-works section">
+  <div class="hr-msg">
+    <div class="line-long"></div>
+    <div class="line-msg">推薦作品</div>
+    <div class="line-long"></div>
+  </div>
+
+  <div class="work-sub-section" *ngFor="let sub of works">
+    <h3>{{getCategory(sub)}}</h3>
+
+    <ngx-masonry class="work-container" [useImagesLoaded]="true">
+      <ngxMasonryItem class="work" *ngFor="let item of sub.cards" (click)="onWorkClick(item)">
+        <img class="preview" [src]="getPreviemImageUrl(item)">
+        <div class="font-area">
+          <div class="title">{{item.name}}</div>
+          <div class="desc">
+            {{item.desc}}
+          </div>
+        </div>
+      </ngxMasonryItem>
+    </ngx-masonry>
+  </div>
+</div>

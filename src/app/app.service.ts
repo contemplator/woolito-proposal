@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
 export class AppService {
   constructor(private httpClient: HttpClient) { }
 
-  fetchTrelloBoards(): Observable<any>{
-    return this.httpClient.get('https://trello.com/b/SeYyWEpC.json');
+  fetchTrelloBoards(id: string): Observable<any>{
+    return this.httpClient.get('https://trello.com/b/' + id + '.json');
   }
 
 }
