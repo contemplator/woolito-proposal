@@ -1,6 +1,6 @@
 {
   "name": "woolito-proposal",
-  "version": "6.0.1",
+  "version": "6.0.2",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -28,7 +28,8 @@
     "ngx-masonry": "^1.1.2",
     "normalize.css": "^8.0.1",
     "rxjs": "^6.2.0",
-    "showdown": "^1.9.0"
+    "showdown": "^1.9.0",
+    "web-animations-js": "^2.3.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.6.5",
