@@ -31,11 +31,12 @@ export class AppComponent implements OnInit {
    */
   fetchTrello(id: string): void {
     this.service.fetchTrelloBoards(id).subscribe(res => {
-
+      // console.log(res);
+      console.log(res.cards);
       this.require = this.convertMarkdown(res.cards.filter(item => item.name === '需求')[0].desc);
       this.audience = this.convertMarkdown(res.cards.filter(item => item.name === '客群')[0].desc);
       this.works = res.lists.filter(item => item.name.indexOf(this.staticWorkPre) > -1);
-
+      
       res.cards.forEach(card => {
         const work = this.works.find(w => w.id === card.idList);
         if (work) {
@@ -74,19 +75,19 @@ export class AppComponent implements OnInit {
     return result;
   }
 
-  /**
-   * 取得 trello card 的 preview
-   * @param item trello card 物件
-   */
-  getPreviemImageUrl(item: any): SafeStyle {
-    const attachments = item.attachments.filter(a => a.previews.length > 0);
-    if (!attachments || attachments.length === 0) {
-      return '';
-    }
+  // /**
+  //  * 取得 trello card 的 preview
+  //  * @param item trello card 物件
+  //  */
+  // getPreviemImageUrl(item: any): SafeStyle {
+  //   const attachments = item.attachments.filter(a => a.previews.length > 0);
+  //   if (!attachments || attachments.length === 0) {
+  //     return '';
+  //   }
 
-    const previews = attachments[0].previews;
-    return previews[previews.length - 3].url;
-  }
+  //   const previews = attachments[0].previews;
+  //   return previews[previews.length - 3].url;
+  // }
 
   /**
    * 點擊作品

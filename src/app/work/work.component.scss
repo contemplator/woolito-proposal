@@ -1,0 +1,26 @@
+.preview{
+    width: 100%;
+    min-height: 240px;
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+.font-area{
+    padding: 20px;
+    text-align: center;
+}
+.title{
+    font-weight: 400;
+    margin: 0;
+    font-size: 18px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: normal;
+}
+.desc{
+    margin-top: 8px;
+    white-space: pre-wrap;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 18px;
+}

@@ -24,18 +24,21 @@
     <div class="line-long"></div>
   </div>
 
-  <div class="work-sub-section" *ngFor="let sub of works">
+  <div class="work-sub-section" *ngFor="let sub of works" [attr.name]="staticWorkPre">
+
+
     <h3 class="sub-section-title">{{getCategory(sub)}}</h3>
 
     <ngx-masonry class="work-container" [useImagesLoaded]="true">
       <ngxMasonryItem class="work" *ngFor="let item of sub.cards" (click)="onWorkClick(item)">
-        <img class="preview" [src]="getPreviemImageUrl(item)">
+        <app-work [work]="item"></app-work>
+        <!-- <img class="preview" [src]="getPreviemImageUrl(item)">
         <div class="font-area">
           <div class="title">{{item.name}}</div>
           <div class="desc">
             {{item.desc}}
           </div>
-        </div>
+        </div> -->
       </ngxMasonryItem>
     </ngx-masonry>
   </div>

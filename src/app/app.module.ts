@@ -8,10 +8,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppService } from './app.service';
 import { NgxMasonryModule } from 'ngx-masonry';
+import { WorkComponent } from './work/work.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    WorkComponent
   ],
   imports: [
     BrowserModule,
