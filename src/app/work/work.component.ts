@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { SafeStyle } from '@angular/platform-browser';
 import { AppService } from 'app/app.service';
+import { User } from './user';
 
 @Component({
   selector: 'app-work',
@@ -14,6 +15,8 @@ export class WorkComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    const user = new User('leo', 20);
+    console.log(user.name);
   }
 
   /**

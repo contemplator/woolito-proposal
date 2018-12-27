@@ -37,6 +37,7 @@ export class AppComponent implements OnInit {
       this.audience = this.convertMarkdown(res.cards.filter(item => item.name === '客群')[0].desc);
       this.works = res.lists.filter(item => item.name.indexOf(this.staticWorkPre) > -1);
       
+      const arr = [];
       res.cards.forEach(card => {
         const work = this.works.find(w => w.id === card.idList);
         if (work) {
