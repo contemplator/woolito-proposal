@@ -9,6 +9,7 @@ import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  siteTitle : string;
   staticWorkPre = '推薦作品 - ';      // 用來標註推薦作品列表的前綴字
   works = [];                       // 推薦作品
   require: string;                  // 需求
@@ -31,11 +32,12 @@ export class AppComponent implements OnInit {
    */
   fetchTrello(id: string): void {
     this.service.fetchTrelloBoards(id).subscribe(res => {
-      // console.log(res);
+      //console.log(res);
       console.log(res.cards);
       this.require = this.convertMarkdown(res.cards.filter(item => item.name === '需求')[0].desc);
       this.audience = this.convertMarkdown(res.cards.filter(item => item.name === '客群')[0].desc);
       this.works = res.lists.filter(item => item.name.indexOf(this.staticWorkPre) > -1);
+      this.siteTitle = res.name ; 
       
       const arr = [];
       res.cards.forEach(card => {

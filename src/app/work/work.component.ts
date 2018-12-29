@@ -16,7 +16,7 @@ export class WorkComponent implements OnInit {
 
   ngOnInit() {
     const user = new User('leo', 20);
-    console.log(user.name);
+    //console.log(user.name);
   }
 
   /**
