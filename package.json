@@ -1,6 +1,6 @@
 {
   "name": "woolito-proposal",
-  "version": "6.0.2",
+  "version": "6.0.4",
   "license": "MIT",
   "scripts": {
     "ng": "ng",

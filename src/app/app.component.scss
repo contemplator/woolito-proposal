@@ -18,7 +18,10 @@
       position: absolute;
       width: 100%;
       top: 50%;
-      transform: translateY(-50%);
+      left: 50%;
+      max-width: 960px;
+      transform: translate(-50%, -50%);
+      text-align: center;
     }
   }
 }
@@ -52,11 +55,21 @@
 .target-audience{
   .target-content{
     color: #333;
+    // max-width: 640px;
+    width: fit-content;
+    margin: 0px auto;
+    // text-align: center;
+    // ul{
+    //   display: inline-block;
+    //   padding-right: 40px;
+    // }
   }
 }
 
 .work-container{
   width: 100vw;
+  max-width: 960px;
+  margin: 0px auto;
 }
 .sub-section-title{
   font-size: 24px;
