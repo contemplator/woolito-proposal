@@ -10,17 +10,14 @@
     font-size: 16px;
   }
   .banner{
-    height: 160px;
+    height: fit-content;
     background: #000;
     color: white;
-    position: relative;
     .banner-content {
-      position: absolute;
       width: 100%;
-      top: 50%;
-      left: 50%;
       max-width: 960px;
-      transform: translate(-50%, -50%);
+      margin: 0px auto;
+      padding: 8px 0;
       text-align: center;
     }
   }
@@ -55,14 +52,8 @@
 .target-audience{
   .target-content{
     color: #333;
-    // max-width: 640px;
     width: fit-content;
     margin: 0px auto;
-    // text-align: center;
-    // ul{
-    //   display: inline-block;
-    //   padding-right: 40px;
-    // }
   }
 }
 
@@ -76,31 +67,14 @@
 }
 
 .work{
-  width: 50px;
-}
-.preview{
-  width: 100px;
-  height: 50px;
-}
-
-.work{
   display: inline-block;
   box-sizing: border-box;
   padding: 16px;
-  width: 33.33%;
+  width: calc(33.33% - 8px);
+  background-color: #fff;
+  margin: 4px;
   cursor: pointer;
-  &:not(:nth-child(3n+1)){
-    padding: 16px 16px 16px 0;
-  }
-  // ::ng-deep .preview{
-  //   width: 50%;
-  // }
 }
-::ng-deep .preview{
-  width: 50%;
-}
-
-
 
 @media screen and (max-width: 900px) {
   .work{

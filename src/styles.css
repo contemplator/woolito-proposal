@@ -1,7 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+html, 
+body{
+  background-color: #eee;
+}
 h1, h2, h3, h4, h5, h6{
   text-align: center;
 }
-.target-content ul{
+.target-content ul,
+.target-content ol,
+.banner-content ol,
+.banner-content ul{
   padding-right: 40px;
+  width: fit-content;
+}
+.banner-content ol{
+  margin: 1em auto;
+}
+.banner-content p{
+  line-height: 1.5;
 }
