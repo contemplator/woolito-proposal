@@ -19,3 +19,6 @@ h1, h2, h3, h4, h5, h6{
 .banner-content p{
   line-height: 1.5;
 }
+.banner-content h2:not(:first-child) {
+  margin-top: 56px;
+}

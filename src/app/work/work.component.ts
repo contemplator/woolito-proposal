@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { SafeStyle } from '@angular/platform-browser';
 import { AppService } from 'app/app.service';
-import { User } from './user';
 
 @Component({
   selector: 'app-work',
@@ -9,15 +8,11 @@ import { User } from './user';
   styleUrls: ['./work.component.scss']
 })
 export class WorkComponent implements OnInit {
-  @Input() work: any;
-  constructor(
-    private service: AppService
-  ) { }
+  @Input() works: any[];
+  @Input() globalSetting: any;
+  constructor() { }
 
-  ngOnInit() {
-    const user = new User('leo', 20);
-    //console.log(user.name);
-  }
+  ngOnInit() { }
 
   /**
    * 取得 trello card 的 preview
@@ -40,6 +35,15 @@ export class WorkComponent implements OnInit {
       }
     });
     return previews[0].url;
+  }
+
+  /**
+   * 點擊作品
+   * @param item trello card 物件
+   */
+  onWorkClick(item: any): void {
+    const linkAttachment = item.attachments.find(a => a.isUpload === false);
+    window.open(linkAttachment.url, '_blank');
   }
 
 }

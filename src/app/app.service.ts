@@ -8,9 +8,7 @@ export class AppService {
 
   constructor(private httpClient: HttpClient) { }
 
-  fetchTrelloBoards(id: string): Observable<any>{
+  fetchTrelloBoards(id: string): Observable<any> {
     return this.httpClient.get('https://trello.com/b/' + id + '.json');
   }
-
-
 }

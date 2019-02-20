@@ -1,45 +1,25 @@
 <div class="header">
-  <!-- <div class="sub-title">Woolito 提案系統</div> -->
   <div class="main-title">{{siteTitle}}</div>
-  <div class="banner">
-    <div class="banner-content markdown" [innerHTML]="require"></div>
-  </div>
 </div>
 
-<div class="target-audience section">
+<div class="section" *ngFor="let section of sections">
   <div class="hr-msg">
     <div class="line-long"></div>
-    <div class="line-msg">目標觀眾</div>
+    <div class="line-msg">{{ section.title }}</div>
     <div class="line-long"></div>
   </div>
-
-  <!-- <h2 class="section-title">目標觀眾</h2> -->
-  <div class="markdown target-content" [innerHTML]="audience"></div>
+  <div class="markdown" [innerHTML]="section.innerHTML"></div>
 </div>
 
 <div class="suggestion-works section">
   <div class="hr-msg">
     <div class="line-long"></div>
-    <div class="line-msg">設計參考</div>
+    <div class="line-msg">{{ globalSetting.workTitle || '設計參考' }}</div>
     <div class="line-long"></div>
   </div>
 
   <div class="work-sub-section" *ngFor="let sub of works" [attr.name]="staticWorkPre">
-
-
     <h3 class="sub-section-title">{{getCategory(sub)}}</h3>
-
-    <ngx-masonry class="work-container" [useImagesLoaded]="true">
-      <ngxMasonryItem class="work" *ngFor="let item of sub.cards" (click)="onWorkClick(item)">
-        <app-work [work]="item"></app-work>
-        <!-- <img class="preview" [src]="getPreviemImageUrl(item)">
-        <div class="font-area">
-          <div class="title">{{item.name}}</div>
-          <div class="desc">
-            {{item.desc}}
-          </div>
-        </div> -->
-      </ngxMasonryItem>
-    </ngx-masonry>
+    <app-work [works]="sub.cards" [globalSetting]="globalSetting"></app-work>
   </div>
 </div>
