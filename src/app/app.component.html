@@ -2,6 +2,10 @@
   <div class="main-title">{{siteTitle}}</div>
 </div>
 
+<div class="banner">
+  <div class="banner-content markdown" [innerHTML]="require"></div>
+</div>
+
 <div class="section" *ngFor="let section of sections">
   <div class="hr-msg">
     <div class="line-long"></div>

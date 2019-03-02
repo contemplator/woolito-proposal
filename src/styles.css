@@ -6,19 +6,6 @@ body{
 h1, h2, h3, h4, h5, h6{
   text-align: center;
 }
-.target-content ul,
-.target-content ol,
-.banner-content ol,
-.banner-content ul{
-  padding-right: 40px;
-  width: fit-content;
-}
-.banner-content ol{
-  margin: 1em auto;
-}
-.banner-content p{
+p{
   line-height: 1.5;
-}
-.banner-content h2:not(:first-child) {
-  margin-top: 56px;
 }

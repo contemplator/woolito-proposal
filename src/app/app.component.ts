@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
   sections = [];
   works = [];                       // 推薦作品
   checklists = [];                  // trello 上的 checklist
+  require: string;                  // 需求
   globalSetting = {                 // 全域設定
     showTitle: true,
     showDesc: true,
@@ -39,6 +40,11 @@ export class AppComponent implements OnInit {
    */
   fetchTrello(id: string): void {
     this.service.fetchTrelloBoards(id).subscribe(res => {
+      const requireCard = res.cards.filter(item => item.name === '需求');
+      if(requireCard[0]){
+        this.require = this.convertMarkdown(requireCard[0].desc);
+      }
+      
       this.checklists = res.checklists;
       this.fetchGolbalSettings(res.cards);
 

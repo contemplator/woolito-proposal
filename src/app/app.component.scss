@@ -8,20 +8,18 @@ $max-width: 960px;
     color: #A0A0A0;
     margin: 16px 0;
   }
-  .sub-title{
-    font-size: 16px;
-  }
-  .banner{
-    height: fit-content;
-    background: #000;
-    color: white;
-    .banner-content {
-      width: 100%;
-      max-width: $max-width;
-      margin: 0px auto;
-      padding: 8px 0;
-      text-align: center;
-    }
+}
+
+.banner{
+  height: fit-content;
+  background: #000;
+  color: white;
+  .banner-content {
+    width: 100%;
+    max-width: $max-width;
+    margin: 0px auto;
+    padding: 8px 0;
+    text-align: center;
   }
 }
 
@@ -52,7 +50,7 @@ $max-width: 960px;
   .markdown{
     color: #333;
     width: fit-content;
-    max-width: $max-width;
+    max-width: 600px;
     margin: 0px auto;
   }
 }

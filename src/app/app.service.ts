@@ -4,8 +4,6 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class AppService {
-  rowData = 'hello';
-
   constructor(private httpClient: HttpClient) { }
 
   fetchTrelloBoards(id: string): Observable<any> {
