@@ -1,13 +1,15 @@
 $max-width: 960px;
 
-.work-container{
+.work-container {
   width: 100vw;
   max-width: $max-width;
   margin: 0px auto;
-  .sub-section-title{
+
+  .sub-section-title {
     font-size: 24px;
   }
-  .work{
+
+  .work {
     display: inline-block;
     box-sizing: border-box;
     padding: 16px;
@@ -15,16 +17,19 @@ $max-width: 960px;
     background-color: #fff;
     margin: 4px;
     cursor: pointer;
-    .preview{
+
+    .preview {
       width: 100%;
       background-repeat: no-repeat;
-      background-size:cover;
+      background-size: cover;
     }
-    .font-area{
+
+    .font-area {
       padding: 20px;
       text-align: center;
     }
-    .title{
+
+    .title {
       font-weight: 400;
       margin: 0;
       font-size: 18px;
@@ -33,7 +38,8 @@ $max-width: 960px;
       text-overflow: ellipsis;
       line-height: normal;
     }
-    .desc{
+
+    .desc {
       margin-top: 8px;
       white-space: pre-wrap;
       font-family: inherit;
@@ -44,13 +50,20 @@ $max-width: 960px;
 }
 
 @media screen and (max-width: 900px) {
-  .work{
-    width: 50%;
+  .work-container {
+    .work {
+      width: calc(50% - 8px);
+    }
   }
 }
 
 @media screen and (max-width: 600px) {
-  .work{
-    width: 100%;
+  .work-container {
+    .work {
+      width: 100%;
+      .font-area{
+        padding: 12px;        
+      }
+    }
   }
 }
