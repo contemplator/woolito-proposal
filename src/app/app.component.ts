@@ -21,6 +21,7 @@ export class AppComponent implements OnInit {
     showDesc: true,
     workTitle: '設計參考'
   };
+  introList: any;
 
   constructor(
     private service: AppService
@@ -29,8 +30,8 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     const hash = window.location.href;
     const index = hash.lastIndexOf('/') + 1;
-    const id = hash.substring(index);
-    // const id = 'HO4UIfOG';
+    // const id = hash.substring(index);
+    const id = 'HO4UIfOG';
     this.fetchTrello(id);
   }
 
@@ -41,10 +42,10 @@ export class AppComponent implements OnInit {
   fetchTrello(id: string): void {
     this.service.fetchTrelloBoards(id).subscribe(res => {
       const requireCard = res.cards.filter(item => item.name === '需求');
-      if(requireCard[0]){
+      if (requireCard[0]) {
         this.require = this.convertMarkdown(requireCard[0].desc);
       }
-      
+
       this.checklists = res.checklists;
       this.fetchGolbalSettings(res.cards);
 
@@ -53,6 +54,7 @@ export class AppComponent implements OnInit {
 
       this.works = res.lists.filter(item => item.name.indexOf(this.staticWorkPre) > -1);
 
+      this.introList = res.lists.find(item => item.name === '專案介紹');
       res.cards.forEach(card => {
         const work = this.works.find(w => w.id === card.idList);
         if (!work) { return; }
@@ -139,7 +141,7 @@ export class AppComponent implements OnInit {
    * 取得章節
    */
   fetchSections(cards: any[]): void {
-    const sections = cards.filter(card => card.name.indexOf('section') > -1);
+    const sections = cards.filter(card => card.name.indexOf('section') === 0 && card.idList === this.introList.id);
     const regex = /section(\d*) - /g;
     this.sections = sections.map(s => {
       const section = new Section();
@@ -170,5 +172,11 @@ export class AppComponent implements OnInit {
       const workTitleItem = checkItems.find(item => item.name.indexOf('作品標題') > -1).name;
       this.globalSetting.workTitle = workTitleItem.replace('作品標題', '').replace('-', '').trim();
     }
+  }
+
+  isProjectIntroCard(card: any): boolean {
+    let result = false;
+    const list = this
+    return true;
   }
 }

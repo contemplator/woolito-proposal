@@ -21,3 +21,21 @@ h6 {
 p {
   line-height: 1.5;
 }
+
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4,
+.markdown h5,
+.markdown h6 {
+  text-align: left;
+}
+
+.banner .markdown h1,
+.banner .markdown h2,
+.banner .markdown h3,
+.banner .markdown h4,
+.banner .markdown h5,
+.banner .markdown h6 {
+  text-align: center;
+}

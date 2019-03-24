@@ -9,7 +9,7 @@
 <div class="section" *ngFor="let section of sections">
   <div class="hr-msg">
     <div class="line-long"></div>
-    <div class="line-msg">{{ section.title }}</div>
+    <div class="line-msg">{{ section?.title }}</div>
     <div class="line-long"></div>
   </div>
   <div class="markdown" [innerHTML]="section.innerHTML"></div>

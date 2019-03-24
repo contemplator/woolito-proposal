@@ -64,6 +64,14 @@ $max-width: 960px;
   }
 }
 
+.work-sub-section {
+  .sub-section-title {
+    margin: 3em 0 1em 0;
+    font-size: 1.5em;
+    text-align: center;
+  }
+}
+
 @media screen and (max-width: 600px) {
   .header {
     .main-title {
@@ -81,6 +89,13 @@ $max-width: 960px;
     .section-title {
       font-size: 1.2em;
       color: #A0A0A0;
+    }
+  }
+
+  .work-sub-section {
+    .sub-section-title {
+      margin: 2.5em 0 1em 0;
+      font-size: 1.2em;
     }
   }
 }
