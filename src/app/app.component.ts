@@ -29,10 +29,16 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     const hash = window.location.href;
-    const index = hash.lastIndexOf('/') + 1;
-    // const id = hash.substring(index);
-    const id = 'HO4UIfOG';
-    this.fetchTrello(id);
+    if (hash.indexOf('localhost') > -1 || hash.indexOf('proposal-dev') > -1) {
+      const index = hash.lastIndexOf('/') + 1;
+      const id = hash.substring(index);
+      // const id = 'HO4UIfOG';
+      this.fetchTrello(id);
+    } else {
+      const params = hash.split('/');
+      const id = params[params.length - 2];
+      this.fetchTrello(id);
+    }
   }
 
   /**
@@ -123,6 +129,9 @@ export class AppComponent implements OnInit {
    * 設定卡片是否顯示摘要
    */
   settingCardShowDesc(checklist: any): boolean {
+    // if(!checklist){
+    //   return true;
+    // }
     const showDescSetting = checklist.checkItems.find(checkItem => checkItem.name === '隱藏摘要');
     if (!showDescSetting) { return true; }
     return showDescSetting.state === CheckitemState.incomplete;
@@ -166,6 +175,9 @@ export class AppComponent implements OnInit {
     if (settingCards) {
       const settingCard = settingCards[0];
       const settingList = this.checklists.find(list => list.idCard === settingCard.id);
+      if (!settingList) {
+        return;
+      }
       const checkItems = settingList.checkItems;
       this.globalSetting.showTitle = checkItems.find(item => item.name === '隱藏標題').state === CheckitemState.incomplete;
       this.globalSetting.showDesc = checkItems.find(item => item.name === '隱藏摘要').state === CheckitemState.incomplete;
