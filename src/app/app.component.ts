@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, isDevMode } from '@angular/core';
 import { AppService } from './app.service';
 import * as showdown from 'showdown';
 import { CheckitemState } from './enum';
@@ -28,15 +28,22 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    // 路徑範例
+    // http://www.woooplay.com/proposal/dxf5Di9T/5/
+    // http://www.woooplay.com/proposal/dxf5Di9T/
+    // http://localhost:4200/HO4UIfOG
+    // http://woooplay.com/proposal-dev/#/HO4UIfOG
     const hash = window.location.href;
-    if (hash.indexOf('localhost') > -1 || hash.indexOf('proposal-dev') > -1) {
+
+    if (isDevMode() || hash.indexOf('proposal-dev') > -1) {
+      // const id = 'HO4UIfOG';
       const index = hash.lastIndexOf('/') + 1;
       const id = hash.substring(index);
-      // const id = 'HO4UIfOG';
       this.fetchTrello(id);
     } else {
       const params = hash.split('/');
-      const id = params[params.length - 2];
+      const trelloIdIndex = params.findIndex(item => item === 'proposal');
+      const id = params[trelloIdIndex + 1];
       this.fetchTrello(id);
     }
   }
