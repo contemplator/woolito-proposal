@@ -44,7 +44,14 @@ export class AppComponent implements OnInit {
       const params = hash.split('/');
       const trelloIdIndex = params.findIndex(item => item === 'proposal');
       const id = params[trelloIdIndex + 1];
-      this.fetchTrello(id);
+      if (id !== '#') {
+        this.fetchTrello(id);
+      } else {
+        // 應付舊版 url: http://woooplay.com/proposal/#/ZclB2ofj
+        const index = hash.lastIndexOf('/') + 1;
+        const id = hash.substring(index);
+        this.fetchTrello(id);
+      }
     }
   }
 
