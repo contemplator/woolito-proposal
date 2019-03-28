@@ -49,8 +49,8 @@ export class AppComponent implements OnInit {
       } else {
         // 應付舊版 url: http://woooplay.com/proposal/#/ZclB2ofj
         const index = hash.lastIndexOf('/') + 1;
-        const id = hash.substring(index);
-        this.fetchTrello(id);
+        const trelloId = hash.substring(index);
+        this.fetchTrello(trelloId);
       }
     }
   }
@@ -177,6 +177,15 @@ export class AppComponent implements OnInit {
       section.title = fullName.replace(matches[0], '');
       section.desc = s.desc;
       section.innerHTML = this.convertMarkdown(section.desc);
+      section.isAttachment = false;
+      if (s.attachments.length > 0 && s.idAttachmentCover) {
+        const attachImg = s.attachments.find(a => a.id = s.idAttachmentCover);
+        if (attachImg) {
+          section.isAttachment = true;
+          const previews = attachImg.previews.sort(this.sortByBytes);
+          section.innerHTML += `<img src="${previews[0].url}" alt="${s.name}">`;
+        }
+      }
       return section;
     });
   }
@@ -200,9 +209,16 @@ export class AppComponent implements OnInit {
     }
   }
 
-  isProjectIntroCard(card: any): boolean {
-    let result = false;
-    const list = this
-    return true;
+  /**
+   * 依照檔案大小排列，降冪
+   */
+  sortByBytes(a, b): number {
+    if (a.bytes > b.bytes) {
+      return -1;
+    }
+    if (a.bytes < b.bytes) {
+      return 1;
+    }
+    return 0;
   }
 }

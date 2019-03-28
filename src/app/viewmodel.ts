@@ -4,4 +4,5 @@ export class Section {
   title: string;
   desc: string;
   innerHTML: string;
+  isAttachment: boolean;
 }

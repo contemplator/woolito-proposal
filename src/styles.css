@@ -39,3 +39,10 @@ p {
 .banner .markdown h6 {
   text-align: center;
 }
+
+img{
+  max-width: 100%;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}

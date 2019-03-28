@@ -61,6 +61,10 @@ $max-width: 960px;
     max-width: 600px;
     margin: 0px auto;
     padding: 0 16px;
+
+    &.attachment {
+      max-width: 1200px;
+    }
   }
 }
 

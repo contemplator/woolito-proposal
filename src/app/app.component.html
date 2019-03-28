@@ -12,7 +12,7 @@
     <div class="line-msg">{{ section?.title }}</div>
     <div class="line-long"></div>
   </div>
-  <div class="markdown" [innerHTML]="section.innerHTML"></div>
+  <div class="markdown" [innerHTML]="section.innerHTML" [ngClass]="{'attachment': section.isAttachment}"></div>
 </div>
 
 <div class="suggestion-works section">
