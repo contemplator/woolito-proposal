@@ -1,8 +1,10 @@
-import { Component, OnInit, isDevMode } from '@angular/core';
+import { Component, OnInit, isDevMode, ViewChild } from '@angular/core';
 import { AppService } from './app.service';
 import * as showdown from 'showdown';
 import { CheckitemState } from './enum';
 import { Section } from './viewmodel';
+import { SafeStyle } from '@angular/platform-browser';
+import { NgxMasonryComponent } from 'ngx-masonry';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +12,7 @@ import { Section } from './viewmodel';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  @ViewChild('masonry') masonry: NgxMasonryComponent;
   siteTitle: string;
   staticWorkPre = '推薦作品 - ';      // 用來標註推薦作品列表的前綴字
   sections = [];
@@ -81,6 +84,11 @@ export class AppComponent implements OnInit {
         if (!work.cards) { work.cards = []; }
         this.settingCard(card);
         work.cards.push(card);
+      });
+
+      // console.log(this.works.map(item=>item.id));
+      this.works.forEach(work => {
+        console.log(work.cards.map(item => item.name).join(', '));
       });
 
       this.fetchSections(res.cards);
@@ -220,5 +228,42 @@ export class AppComponent implements OnInit {
       return 1;
     }
     return 0;
+  }
+
+  /**
+   * 取得 trello card 的 preview
+   * @param item trello card 物件
+   */
+  getPreviemImageUrl(item: any): SafeStyle {
+    const attachments = item.attachments.filter(a => a.previews.length > 0);
+    if (!attachments || attachments.length === 0) {
+      return '';
+    }
+
+    let previews = attachments[0].previews;
+    previews = previews.sort((a, b) => {
+      if (a.bytes > b.bytes) {
+        return -1;
+      } else if (a.bytes > b.bytes) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
+    return previews[0].url;
+  }
+
+  /**
+   * 點擊作品
+   * @param item trello card 物件
+   */
+  onWorkClick(item: any): void {
+    const linkAttachment = item.attachments.find(a => a.isUpload === false);
+    window.open(linkAttachment.url, '_blank');
+  }
+
+  test(): void {
+    console.log('hi');
+    this.masonry.layout();
   }
 }

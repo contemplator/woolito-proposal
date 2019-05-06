@@ -24,6 +24,17 @@
 
   <div class="work-sub-section" *ngFor="let sub of works" [attr.name]="staticWorkPre">
     <h3 class="sub-section-title">{{getCategory(sub)}}</h3>
-    <app-work [works]="sub.cards" [globalSetting]="globalSetting"></app-work>
+    <!-- <app-work [works]="sub.cards" [globalSetting]="globalSetting"></app-work> -->
+    <ngx-masonry class="work-container" [useImagesLoaded]="false" #masonry>
+      <ngxMasonryItem class="work" *ngFor="let work of sub.cards" (click)="onWorkClick(work)">
+        <img class="preview" [src]="getPreviemImageUrl(work)" (load)="test()">
+        <div class="font-area" *ngIf="(work.showTitle || work.showDesc) || (globalSetting.showTitle || globalSetting.showDesc)">
+          <div class="title" *ngIf="work.showTitle">{{work.name}}</div>
+          <div class="desc" *ngIf="work.showDesc">
+            {{work.desc}}
+          </div>
+        </div>
+      </ngxMasonryItem>
+    </ngx-masonry>
   </div>
 </div>
