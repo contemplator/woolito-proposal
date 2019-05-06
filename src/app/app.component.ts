@@ -1,10 +1,9 @@
-import { Component, OnInit, isDevMode, ViewChild } from '@angular/core';
+import { Component, OnInit, isDevMode } from '@angular/core';
 import { AppService } from './app.service';
 import * as showdown from 'showdown';
 import { CheckitemState } from './enum';
 import { Section } from './viewmodel';
 import { SafeStyle } from '@angular/platform-browser';
-import { NgxMasonryComponent } from 'ngx-masonry';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +11,6 @@ import { NgxMasonryComponent } from 'ngx-masonry';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  @ViewChild('masonry') masonry: NgxMasonryComponent;
   siteTitle: string;
   staticWorkPre = '推薦作品 - ';      // 用來標註推薦作品列表的前綴字
   sections = [];
@@ -260,10 +258,5 @@ export class AppComponent implements OnInit {
   onWorkClick(item: any): void {
     const linkAttachment = item.attachments.find(a => a.isUpload === false);
     window.open(linkAttachment.url, '_blank');
-  }
-
-  test(): void {
-    console.log('hi');
-    this.masonry.layout();
   }
 }

@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { SafeStyle } from '@angular/platform-browser';
-import { AppService } from 'app/app.service';
+import { NgxMasonryComponent } from 'ngx-masonry';
 
 @Component({
   selector: 'app-work',
@@ -8,6 +8,7 @@ import { AppService } from 'app/app.service';
   styleUrls: ['./work.component.scss']
 })
 export class WorkComponent implements OnInit {
+  @ViewChild('masonry') masonry: NgxMasonryComponent;
   @Input() works: any[];
   @Input() globalSetting: any;
   constructor() { }
@@ -44,6 +45,10 @@ export class WorkComponent implements OnInit {
   onWorkClick(item: any): void {
     const linkAttachment = item.attachments.find(a => a.isUpload === false);
     window.open(linkAttachment.url, '_blank');
+  }
+
+  render(): void {
+    this.masonry.layout();
   }
 
 }

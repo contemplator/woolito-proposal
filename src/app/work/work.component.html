@@ -1,6 +1,6 @@
-<ngx-masonry class="work-container" [useImagesLoaded]="true">
+<ngx-masonry class="work-container" [useImagesLoaded]="false" #masonry>
   <ngxMasonryItem class="work" *ngFor="let work of works" (click)="onWorkClick(work)">
-    <img class="preview" [src]="getPreviemImageUrl(work)">
+    <img class="preview" [src]="getPreviemImageUrl(work)" (load)="render()">
     <div class="font-area" *ngIf="(work.showTitle || work.showDesc) || (globalSetting.showTitle || globalSetting.showDesc)">
       <div class="title" *ngIf="work.showTitle">{{work.name}}</div>
       <div class="desc" *ngIf="work.showDesc">
