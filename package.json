@@ -1,6 +1,6 @@
 {
   "name": "woolito-proposal",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -10,7 +10,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "predeploy": "npm run build",
-    "deploy": "ssh woolito@166.62.30.153 'rm -rf /home/woolito/public_html/proposal-dev' && scp -r ./dist woolito@166.62.30.153:/home/woolito/public_html/proposal-dev"
+    "deploy": "ssh woolito@166.62.30.153 'rm -rf /home/woolito/public_html/proposal-dev' && scp -r ./dist woolito@166.62.30.153:/home/woolito/public_html/proposal-dev && git push"
   },
   "private": true,
   "dependencies": {
