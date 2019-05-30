@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { SafeStyle } from '@angular/platform-browser';
 import { NgxMasonryComponent } from 'ngx-masonry';
+import * as showdown from 'showdown';
 
 @Component({
   selector: 'app-work',
@@ -49,6 +50,13 @@ export class WorkComponent implements OnInit {
 
   render(): void {
     this.masonry.layout();
+  }
+
+  getWorkDesc(content: string): string{
+    const converter = new showdown.Converter();
+    const lines = content.split('\n');
+    const htmls = lines.map(item => converter.makeHtml(item));
+    return htmls.join('\n');
   }
 
 }

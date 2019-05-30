@@ -2,10 +2,8 @@
   <ngxMasonryItem class="work" *ngFor="let work of works" (click)="onWorkClick(work)">
     <img class="preview" [src]="getPreviemImageUrl(work)" (load)="render()">
     <div class="font-area" *ngIf="(work.showTitle || work.showDesc) || (globalSetting.showTitle || globalSetting.showDesc)">
-      <div class="title" *ngIf="work.showTitle">{{work.name}}</div>
-      <div class="desc" *ngIf="work.showDesc">
-        {{work.desc}}
-      </div>
+      <div class="title" *ngIf="work.showTitle">{{ work.name }}</div>
+      <div class="desc" *ngIf="work.showDesc" [innerHTML]="getWorkDesc(work.desc)"></div>
     </div>
   </ngxMasonryItem>
 </ngx-masonry>
